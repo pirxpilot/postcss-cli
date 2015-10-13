@@ -62,7 +62,7 @@ into account:
 
 #### `--config|-c`
 
-JSON file with plugin configuration. Plugin names should be the keys.
+JSON file with plugin configuration. Plugin names should be the keys. The default is `postcss.json`.
 
 ````json
 {

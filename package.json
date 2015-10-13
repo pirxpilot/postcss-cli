@@ -22,7 +22,7 @@
     "neo-async": "^1.0.0",
     "postcss": "^5.0.0",
     "read-file-stdin": "^0.2.0",
-    "yargs": "^3.8.0"
+    "yargs": "^3.27.0"
   },
   "optionalDependencies": {
     "chokidar": "^1.0.3"
