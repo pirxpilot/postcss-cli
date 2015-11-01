@@ -30,6 +30,8 @@ var argv = require("yargs")
   .describe('p', 'Alternative CSS parser')
   .alias('t', 'stringifier')
   .describe('t', 'Alternative output stringifier')
+  .alias('H', 'hierarchy')
+  .describe('H', 'maintain the input directory hierarchy in the output folder')
   .alias('w', 'watch')
   .describe('w', 'auto-recompile when detecting source changes')
   .requiresArg(['u', 'c', 'i', 'o', 'd', 's', 'p', 't'])
@@ -81,7 +83,20 @@ if (argv.use.indexOf("postcss-import") !== -1) {
   }
 }
 
-var inputFiles = globby.sync(argv._);
+var path = require('path');
+
+var inputFiles;
+
+if (argv.H) {
+  if (!argv.d) {
+    console.error('Please specify --dir [output directory] for your files');
+    process.exit(1);
+  }
+  inputFiles = globby.sync(path.join(argv._[0], '**/*.css'));
+} else {
+  inputFiles = globby.sync(argv._);
+}
+
 if (!inputFiles.length) {
   if (argv.input) {
     inputFiles = Array.isArray(argv.input) ? argv.input : [argv.input];
@@ -122,7 +137,6 @@ var customSyntaxOptions = ['syntax', 'parser', 'stringifier']
 var async = require('neo-async');
 var fs = require('fs');
 var readFile = require('read-file-stdin');
-var path = require('path');
 var postcss = require('postcss');
 var processor = postcss(plugins);
 
@@ -166,7 +180,11 @@ function fsWatcher(entryPoints) {
 function compile(input, fn) {
   var output = argv.output;
   if (argv.dir) {
-    output = path.join(argv.dir, path.basename(input));
+    if (argv.H) {
+      output = path.join(argv.dir, path.relative(argv._[0], input));
+    } else {
+      output = path.join(argv.dir, path.basename(input));
+    }
   } else if (argv.replace) {
     output = input;
   }
@@ -219,10 +237,18 @@ function onError(err, keepAlive) { // XXX: avoid overloaded signature?
   }
 }
 
+var mkdirp = require('mkdirp');
+
 function writeFile(name, content, fn) {
   if (!name) {
     process.stdout.write(content);
     return fn();
   }
-  fs.writeFile(name, content, fn);
+  mkdirp(path.dirname(name), function(err) {
+    if (err) {
+      console.error(err)
+      process.exit(1);
+    }
+    fs.writeFile(name, content, fn);
+  });
 }
