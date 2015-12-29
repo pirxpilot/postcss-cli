@@ -50,6 +50,15 @@ directory. Without this option, postcss-cli will look for the plugins in the
 `node_modules` in which it is installed - specifically if it is installed
 globally it will only look for plugins that are globally installed.
 
+#### `--hierarchy|-H`
+
+Maintain the input directory hierarchy in the output folder.
+
+**NOTE**
+- works only when the `--dir` option is used
+- only one input argument is considered; subsequent inputs are ignored
+- the input argument should be directory instead of file
+
 #### `--watch|-w`
 
 Observe file system changes and recompile as source files change.
@@ -146,6 +155,10 @@ Use more than one plugin and pass config parameters
 Use multiple plugins and multiple input files
 
     postcss -u postcss-cachify -u autoprefixer -d build *.css
+
+Maintain the same directory structure in the output directory
+
+    postcss -u cssnano -H -d build src
 
 ## License
 
