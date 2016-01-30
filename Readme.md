@@ -1,43 +1,32 @@
 [![Build Status](https://img.shields.io/travis/code42day/postcss-cli.svg)](http://travis-ci.org/code42day/postcss-cli)
 [![Dependency Status](https://img.shields.io/gemnasium/code42day/postcss-cli.svg)](https://gemnasium.com/code42day/postcss-cli)
-[![NPM version](https://img.shields.io/npm/v/postcss-cli.svg)](http://badge.fury.io/js/postcss-cli)
+[![NPM version](https://img.shields.io/npm/v/postcss-cli-simple.svg)](http://badge.fury.io/js/postcss-cli-simple)
 
-# postcss-cli
+# postcss-cli-simple
 
-Traditional CLI for [postcss]
+Simple CLI for [postcss]. To be used in Makefiles. If you are looking for more options check out [postcss-cli].
 
 ## Installation
 
-`npm install postcss-cli`
-
-| postcss-cli version | postcss version |
-| ---- | ---- |
-| 1.x | 4.x |
-| 2.x | 5.x |
+npm install postcss-cli-simple
 
 ## Usage
 
-    postcss [options] [-o output-file|-d output-directory|-r] [input-file]
+    postcss [options] -o output-file input-file
+
+In Makefile you can use it with [pattern rules]:
+
+````Make
+deploy/%.css: %.css
+  ./node_modules/.bin/postcss \
+    --use postcss-url --postcss-url.url=rebase \
+    --use autoprefixer --autoprefixer.browsers "> 5%" \
+    --output $@ $<
+````
 
 #### `--output|-o`
 
-Output file name. If no output file is specified, `postcss` will write to `stdout`, however plugins
-that rely on output file location will not work properly.
-
-Similarly, if no input file is specified, `postcss` will read from `stdin`.
-Plugins that rely on input file location will not work properly.
-
-#### `--dir|-d`
-
-Output files location. Either `--output`, `--dir` or `--replace` option, but
-not all of them, need to be specified. `--dir` or `--replace` needs to be used
-if multiple input file is provided.
-
-#### `--replace|-r`
-
-Replace input file(s) with generated output. Either `--output`, `--dir` or
-`--replace` option, but not all of them, need to be specified. `--replace` or
-`--dir` needs to be used if multiple input file is provided.
+Output file name.
 
 #### `--use|-u`
 
@@ -55,32 +44,6 @@ You can use [advances source map options][source-map-options] - some examples:
 - `--no-map.annotation` - supress adding annotation to CSS
 - `--no-map.sourcesContent` - remove origin CSS from maps
 
-#### `--local-plugins`
-
-Look up plugins starting from `node_modules` located in the current working
-directory. Without this option, postcss-cli will look for the plugins in the
-`node_modules` in which it is installed - specifically if it is installed
-globally it will only look for plugins that are globally installed.
-
-#### `--watch|-w`
-
-Observe file system changes and recompile as source files change.
-
-When inlining CSS imports, add an update handler to your JavaScript
-configuration file to ensure referenced modules are taken into account:
-
-```js
-{
-  "postcss-import": {
-    onImport: function(sources) {
-      global.watchCSS(sources, this.from);
-    }
-  }
-}
-```
-
-For [postcss-import], this handler is added automatically.
-
 #### `--config|-c`
 
 JSON file with plugin configuration. Plugin names should be the keys.
@@ -96,7 +59,7 @@ JSON file with plugin configuration. Plugin names should be the keys.
 }
 ````
 
-JavaScript configuration can be used if functions are allowed as plugins parameters:
+JavaScript configuration can be used if functions are allowed as plugins parameters. Although you might be better of to write your own plugin.
 
 ````js
 module.exports = {
@@ -108,6 +71,7 @@ module.exports = {
   }
 };
 ````
+
 Alternatively configuration options can be passed as `--plugin.option` parameters.
 
 Note that command-line options can also be specified in the config file:
@@ -115,9 +79,7 @@ Note that command-line options can also be specified in the config file:
 ````json
 {
     "use": ["autoprefixer", "postcss-cachify"],
-    "input": "screen.css",
     "output": "bundle.css",
-    "local-plugins": true,
     "autoprefixer": {
         "browsers": "> 5%"
     },
@@ -155,14 +117,12 @@ Use more than one plugin and pass config parameters
         --use postcss-cachify --postcss-cachify.baseUrl /res \
         -o screen.css screen.css
 
-Use multiple plugins and multiple input files
-
-    postcss -u postcss-cachify -u autoprefixer -d build *.css
 
 ## License
 
 MIT
 
-[postcss]: https://github.com/postcss/postcss
-[postcss-import]: https://github.com/postcss/postcss-import
+[postcss]: https://npmjs.org/package/postcss
+[postcss-cli]: https://npmjs.org/package/postcss-cli
 [source-map-options]: https://github.com/postcss/postcss/blob/master/docs/source-maps.md
+[pattern rules]: https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html
