@@ -44,6 +44,11 @@ if (!Array.isArray(argv.use)) {
   argv.use = [argv.use];
 }
 
+if (argv.map === 'file') {
+  // treat `--map file` as `--no-map.inline`
+  argv.map = { inline: false };
+}
+
 // load and configure plugin array
 var plugins = argv.use.map(function(name) {
   var plugin = require(name);
@@ -55,7 +60,7 @@ var plugins = argv.use.map(function(name) {
   return plugin;
 });
 
-var customSyntaxOptions = ['syntax', 'parser', 'stringifier']
+var commonOptions = ['syntax', 'parser', 'stringifier']
   .reduce(function(cso, opt) {
     if (argv[opt]) {
       cso[opt] = require(argv[opt]);
@@ -64,10 +69,8 @@ var customSyntaxOptions = ['syntax', 'parser', 'stringifier']
   }, Object.create(null));
 
 
-var mapOptions = argv.map;
-// treat `--map file` as `--no-map.inline`
-if (mapOptions === 'file') {
-  mapOptions = { inline: false };
+if ('map' in argv) {
+  commonOptions.map = argv.map;
 }
 
 var async = require('neo-async');
@@ -90,13 +93,9 @@ function processCSS(processor, input, output, fn) {
       to: output
     };
 
-    Object.keys(customSyntaxOptions).forEach(function(opt) {
-      options[opt] = customSyntaxOptions[opt];
+    Object.keys(commonOptions).forEach(function(opt) {
+      options[opt] = commonOptions[opt];
     });
-
-    if (typeof mapOptions !== 'undefined') {
-      options.map = mapOptions;
-    }
 
     var result = processor.process(css, options);
 
@@ -124,7 +123,7 @@ function writeResult (name, content, fn) {
   var funcs = [
     async.apply(fs.writeFile, name, content.css)
   ];
-  if (content.map && name) {
+  if (content.map) {
     funcs.push(async.apply(fs.writeFile, name + '.map', content.map.toString()));
   }
   async.parallel(funcs, fn);
