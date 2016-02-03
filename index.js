@@ -79,15 +79,10 @@ var postcss = require('postcss');
 var processor = postcss(plugins);
 
 // this is where magic happens
-processCSS(processor, argv._[0], argv.output, onError);
+processCSS(processor, argv._[0], argv.output, dumpErrors);
 
 function processCSS(processor, input, output, fn) {
   function doProcess(css, fn) {
-    function onResult(result) {
-      result.warnings().forEach(function(w) { console.warn(w.toString()); });
-      fn(null, result);
-    }
-
     var options = {
       from: input,
       to: output
@@ -97,25 +92,33 @@ function processCSS(processor, input, output, fn) {
       options[opt] = commonOptions[opt];
     });
 
-    var result = processor.process(css, options);
-
-    result.then(onResult).catch(fn);
+    processor
+      .process(css, options)
+      .then(function(result) { fn(null, result); })
+      .catch(fn);
   }
 
   async.waterfall([
     async.apply(fs.readFile, input),
     doProcess,
+    async.apply(dumpWarnings),
     async.apply(writeResult, output)
   ], fn);
 }
 
-function onError(err) {
-  if (err) {
-    if (err.message && typeof err.showSourceCode === 'function') {
-      console.error(err.message, err.showSourceCode());
-    } else {
-      console.error(err);
-    }
+function dumpWarnings(result, fn) {
+  result.warnings().forEach(function(w) { console.warn(w.toString()); });
+  fn(null, result);
+}
+
+function dumpErrors(err) {
+  if (!err) {
+    return;
+  }
+  if (err.message && typeof err.showSourceCode === 'function') {
+    console.error(err.message, err.showSourceCode());
+  } else {
+    console.error(err);
   }
 }
 
