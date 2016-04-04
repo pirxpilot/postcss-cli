@@ -21,6 +21,7 @@ deploy/%.css: %.css
   ./node_modules/.bin/postcss \
     --use postcss-url --postcss-url.url=rebase \
     --use autoprefixer --autoprefixer.browsers "> 5%" \
+    --use cssnano --no-cssnano.discardUnused
     --output $@ $<
 ````
 
@@ -31,6 +32,8 @@ Output file name.
 #### `--use|-u`
 
 Plugin to be used. Multiple plugins can be specified. At least one plugin needs to be specified either with `--use` option or in the config file.
+
+Plugin options can be specified using [yargs dot notation]. For example, to pass `browsers` option to `autoprefixer` one can use `--autoprefixer.browsers "> 5%"`. To set plugin option to `false` use [yargs boolean negation]. For example, to switch off `discardUnused` in `cssnano` try: `--no-cssnano.discardUnused`.  
 
 #### `--map|-m`
 
@@ -126,3 +129,5 @@ MIT
 [postcss-cli]: https://npmjs.org/package/postcss-cli
 [source-map-options]: https://github.com/postcss/postcss/blob/master/docs/source-maps.md
 [pattern rules]: https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html
+[yargs dot notation]: https://www.npmjs.com/package/yargs#dot-notation
+[yargs boolean negation]: https://www.npmjs.com/package/yargs#negate-fields
