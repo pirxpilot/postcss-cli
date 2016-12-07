@@ -25,5 +25,10 @@
   "devDependencies": {
     "jshint": "^2.6.3",
     "postcss-url": "^5.0.0"
-  }
+  },
+  "files": [
+    "index.js",
+    "bin",
+    "lib"
+  ]
 }
