@@ -1,5 +1,5 @@
-[![Build Status](https://img.shields.io/travis/code42day/postcss-cli.svg)](http://travis-ci.org/code42day/postcss-cli)
-[![Dependency Status](https://img.shields.io/gemnasium/code42day/postcss-cli.svg)](https://gemnasium.com/code42day/postcss-cli)
+[![Build Status](https://img.shields.io/travis/pirxpilot/postcss-cli.svg)](http://travis-ci.org/pirxpilot/postcss-cli)
+[![Dependency Status](https://img.shields.io/gemnasium/pirxpilot/postcss-cli.svg)](https://gemnasium.com/pirxpilot/postcss-cli)
 [![NPM version](https://img.shields.io/npm/v/postcss-cli-simple.svg)](http://badge.fury.io/js/postcss-cli-simple)
 
 # postcss-cli-simple

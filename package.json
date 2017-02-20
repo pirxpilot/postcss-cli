@@ -9,13 +9,13 @@
   "scripts": {
     "test": "make"
   },
-  "repository": "https://github.com/code42day/postcss-cli.git",
+  "repository": "https://github.com/pirxpilot/postcss-cli.git",
   "keywords": [
     "postcss",
     "postcss-runner",
     "cli"
   ],
-  "author": "Damian Krzeminski <pirxpilot@code42day.com>",
+  "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
   "dependencies": {
     "neo-async": "~2",
