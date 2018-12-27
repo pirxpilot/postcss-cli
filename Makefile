@@ -17,39 +17,39 @@ test-help: | test/build
 test-version: | test/build
 	./bin/postcss --version
 
-test/build/opts.css: test/in.css | test/build
+test/build/opts.css: test/fixtures/in.css | test/build
 	./bin/postcss -u postcss-url --postcss-url.url=rebase -o $@ $<
 	@$(DIFF) $@ $(subst build,ref,$@)
 
-test/build/source-maps.css: test/in.css | test/build
+test/build/source-maps.css: test/fixtures/in.css | test/build
 	./bin/postcss -u postcss-url --postcss-url.url=rebase --map -o $@ $<
 	@$(DIFF) $@ $(subst build,ref,$@)
 
-test/build/source-maps-file.css: test/in.css | test/build
+test/build/source-maps-file.css: test/fixtures/in.css | test/build
 	./bin/postcss -u postcss-url --postcss-url.url=rebase --map file -o $@ $<
 	@$(DIFF) $@ $(subst build,ref,$@)
 	@$(DIFF) ${@}.map $(subst build,ref,${@}.map)
 
-test/build/invalid.css: test/in-force-error.css | test/build
-	./bin/postcss --use ./test/dummy-plugin --dummy-plugin.fail=true -o $@ $< || echo Error is OK here....
+test/build/invalid.css: test/fixtures/in-force-error.css | test/build
+	./bin/postcss --use ./test/fixtures/dummy-plugin --dummy-plugin.fail=true -o $@ $< || echo Error is OK here....
 
-test/build/warning.css: test/in-warning.css | test/build
-	./bin/postcss --use ./test/dummy-plugin -o $@ $< && echo Warning is OK here....
+test/build/warning.css: test/fixtures/in-warning.css | test/build
+	./bin/postcss --use ./test/fixtures/dummy-plugin -o $@ $< && echo Warning is OK here....
 
-test/build/config.css: test/in.css | test/build
-	./bin/postcss -u postcss-url -c test/config.json -o $@ $<
+test/build/config.css: test/fixtures/in.css | test/build
+	./bin/postcss -u postcss-url -c test/fixtures/config.json -o $@ $<
 	@$(DIFF) $@ $(subst build,ref,$@)
 
-test/build/config-all.css: test/in.css | test/build
-	./bin/postcss -c test/config-all.json test/in.css
+test/build/config-all.css: test/fixtures/in.css | test/build
+	./bin/postcss -c test/fixtures/config-all.json test/fixtures/in.css
 	@$(DIFF) $@ $(subst build,ref,$@)
 
-test/build/js-config.css: test/in.css | test/build
-	./bin/postcss -u postcss-url -c test/config.js -o $@ $<
+test/build/js-config.css: test/fixtures/in.css | test/build
+	./bin/postcss -u postcss-url -c test/fixtures/config.js -o $@ $<
 	@$(DIFF) $@ $(subst build,ref,$@)
 
-test/build/js-config-all.css: test/in.css | test/build
-	./bin/postcss -c test/config-all.js test/in.css
+test/build/js-config-all.css: test/fixtures/in.css | test/build
+	./bin/postcss -c test/fixtures/config-all.js test/fixtures/in.css
 	@$(DIFF) $@ $(subst build,ref,$@)
 
 test/build:
