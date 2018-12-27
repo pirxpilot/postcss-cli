@@ -73,7 +73,7 @@ if ('map' in argv) {
   commonOptions.map = argv.map;
 }
 
-var async = require('neo-async');
+var async = require('async');
 var fs = require('fs');
 var postcss = require('postcss');
 var processor = postcss(plugins);
