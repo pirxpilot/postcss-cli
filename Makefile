@@ -7,9 +7,14 @@ TESTS = opts source-maps source-maps-file config config-all js-config js-config-
 
 DIFF = diff -q
 
-test: test-help \
+test: \
+	test-unit \
+	test-help \
 	test-version \
 	$(patsubst %,test/build/%.css,$(TESTS))
+
+test-unit:
+	./node_modules/.bin/mocha --require should
 
 test-help: | test/build
 	./bin/postcss --help

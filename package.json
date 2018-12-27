@@ -23,8 +23,10 @@
     "yargs": "^3.8.0"
   },
   "devDependencies": {
-    "jshint": "^2.6.3",
-    "postcss-url": "^8.0.0"
+    "jshint": "~2",
+    "mocha": "~5",
+    "postcss-url": "^8.0.0",
+    "should": "~13"
   },
   "files": [
     "index.js",

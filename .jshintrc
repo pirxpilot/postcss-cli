@@ -4,5 +4,6 @@
   "unused": true,
   "laxbreak": true,
   "laxcomma": true,
-  "proto": true
+  "proto": true,
+  "esversion": 6
 }
