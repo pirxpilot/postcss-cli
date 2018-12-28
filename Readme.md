@@ -1,6 +1,7 @@
-[![Build Status](https://img.shields.io/travis/pirxpilot/postcss-cli.svg)](http://travis-ci.org/pirxpilot/postcss-cli)
-[![Dependency Status](https://img.shields.io/gemnasium/pirxpilot/postcss-cli.svg)](https://gemnasium.com/pirxpilot/postcss-cli)
-[![NPM version](https://img.shields.io/npm/v/postcss-cli-simple.svg)](http://badge.fury.io/js/postcss-cli-simple)
+[![NPM version][npm-image]][npm-url]
+[![Build Status][travis-image]][travis-url]
+[![Dependency Status][deps-image]][deps-url]
+[![Dev Dependency Status][deps-dev-image]][deps-dev-url]
 
 # postcss-cli-simple
 
@@ -131,3 +132,16 @@ MIT
 [pattern rules]: https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html
 [yargs dot notation]: https://www.npmjs.com/package/yargs#dot-notation
 [yargs boolean negation]: https://www.npmjs.com/package/yargs#negate-fields
+
+
+[npm-image]: https://img.shields.io/npm/v/postcss-cli-simple.svg
+[npm-url]: https://npmjs.org/package/postcss-cli-simple
+
+[travis-url]: https://travis-ci.org/pirxpilot/postcss-cli
+[travis-image]: https://img.shields.io/travis/pirxpilot/postcss-cli.svg
+
+[deps-image]: https://img.shields.io/david/pirxpilot/postcss-cli.svg
+[deps-url]: https://david-dm.org/pirxpilot/postcss-cli
+
+[deps-dev-image]: https://img.shields.io/david/dev/pirxpilot/postcss-cli.svg
+[deps-dev-url]: https://david-dm.org/pirxpilot/postcss-cli?type=dev
