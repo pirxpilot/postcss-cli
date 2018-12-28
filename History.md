@@ -1,4 +1,12 @@
 
+3.0.0 / 2018-12-27
+==================
+
+ * rewrite in ES6
+ * replace yargs with yargs-parser
+ * replace neo-async with async
+ * work with postcss ~5, ~6, and ~7
+
 1.0.4 / 2017-02-19
 ==================
 
