@@ -1,5 +1,9 @@
 var argv = require('./lib/argv')();
 
+if (typeof argv === 'number') {
+  process.exit(argv);
+}
+
 // load and configure plugin array
 var plugins = argv.use.map(function(name) {
   var plugin = require(name);

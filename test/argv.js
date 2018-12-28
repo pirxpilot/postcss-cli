@@ -7,13 +7,9 @@ function _(strings) {
   return strings[0].trim().split(/\s+/);
 }
 
-/* global describe, it, beforeEach */
+/* global describe, it */
 
 describe('argv', function() {
-
-  beforeEach(function() {
-    require('yargs').reset();
-  });
 
   it('single plugin', function() {
     const opts = argv(_`--use autoprefixer -o out.css in.css`);

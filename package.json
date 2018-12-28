@@ -20,7 +20,7 @@
   "dependencies": {
     "async": "~2",
     "postcss": "~5 || ~6 || ~7",
-    "yargs": "^3.8.0"
+    "yargs-parser": "~11"
   },
   "devDependencies": {
     "jshint": "~2",
