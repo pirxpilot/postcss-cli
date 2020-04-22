@@ -1,1 +1,1 @@
-{"version":3,"sources":["../fixtures/in.css"],"names":[],"mappings":"AAAA;EACE,uCAA2B;EAC3B,cAAc;CACf","file":"source-maps-file.css","sourcesContent":["body {\n  background: url(image.png);\n  display: flex;\n}\n"]}
+{"version":3,"sources":["../fixtures/in.css"],"names":[],"mappings":"AAAA;EACE,sCAA0B;EAC1B,aAAa;AACf","file":"source-maps-file.css","sourcesContent":["body {\n  background: url(image.png);\n  display: flex;\n}\n"]}
