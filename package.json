@@ -24,9 +24,8 @@
   },
   "devDependencies": {
     "jshint": "~2",
-    "mocha": "~5",
     "postcss-url": "^8.0.0",
-    "should": "~13"
+    "tape": "~4"
   },
   "files": [
     "index.js",

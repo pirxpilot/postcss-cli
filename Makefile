@@ -14,7 +14,7 @@ test: \
 	$(patsubst %,test/build/%.css,$(TESTS))
 
 test-unit:
-	./node_modules/.bin/mocha --require should
+	./node_modules/.bin/tape test/*.js
 
 test-help: | test/build
 	./bin/postcss --help
