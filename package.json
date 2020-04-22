@@ -18,15 +18,14 @@
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
   "dependencies": {
-    "async": "~2",
+    "async": "~3",
     "postcss": "~5 || ~6 || ~7",
-    "yargs-parser": "~11"
+    "yargs-parser": "~18"
   },
   "devDependencies": {
     "jshint": "~2",
-    "mocha": "~5",
     "postcss-url": "^8.0.0",
-    "should": "~13"
+    "tape": "~4"
   },
   "files": [
     "index.js",
