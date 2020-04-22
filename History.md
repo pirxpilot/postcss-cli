@@ -1,4 +1,11 @@
 
+3.0.1 / 2020-04-22
+==================
+
+ * upgrade async to ~3
+ * upgrade yargs-parser
+ * replace mocha/should with tape
+
 3.0.0 / 2018-12-27
 ==================
 
