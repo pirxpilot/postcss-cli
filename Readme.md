@@ -63,7 +63,7 @@ JSON file with plugin configuration. Plugin names should be the keys.
 }
 ````
 
-JavaScript configuration can be used if functions are allowed as plugins parameters. Although you might be better of to write your own plugin.
+JavaScript configuration can be used if functions are allowed as plugins parameters. Although you might be better off writing your own plugin.
 
 ````js
 module.exports = {
