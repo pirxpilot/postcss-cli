@@ -1,7 +1,7 @@
-all: clean lint test
+check: lint test
 
 lint:
-	./node_modules/.bin/jshint *.js
+	./node_modules/.bin/jshint *.js lib test bin/postcss
 
 test:
 	./node_modules/.bin/tape test/*.js
@@ -9,4 +9,4 @@ test:
 clean:
 	rm -rf test/_build
 
-.PHONY: all lint clean test
+.PHONY: check clean lint test

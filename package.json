@@ -7,7 +7,7 @@
     "postcss": "./bin/postcss"
   },
   "scripts": {
-    "test": "make"
+    "test": "make check"
   },
   "repository": "https://github.com/pirxpilot/postcss-cli.git",
   "keywords": [
