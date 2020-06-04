@@ -1,4 +1,13 @@
 
+3.1.0 / 2020-06-04
+==================
+
+ * export runner and argument parser
+ * fix make check and lint target
+ * fix typo in Readme
+ * move command line tests to tape
+ * update tape to ~5
+
 3.0.1 / 2020-04-22
 ==================
 
