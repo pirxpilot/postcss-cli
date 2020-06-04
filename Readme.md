@@ -6,6 +6,7 @@
 # postcss-cli-simple
 
 Simple CLI for [postcss]. To be used in Makefiles. If you are looking for more options check out [postcss-cli].
+More on the [history of this project][history].
 
 ## Installation
 
@@ -63,7 +64,7 @@ JSON file with plugin configuration. Plugin names should be the keys.
 }
 ````
 
-JavaScript configuration can be used if functions are allowed as plugins parameters. Although you might be better of to write your own plugin.
+JavaScript configuration can be used if functions are allowed as plugins parameters. Although you might be better off writing your own plugin.
 
 ````js
 module.exports = {
@@ -128,6 +129,7 @@ MIT
 
 [postcss]: https://npmjs.org/package/postcss
 [postcss-cli]: https://npmjs.org/package/postcss-cli
+[history]: https://github.com/postcss/postcss/issues/154#issuecomment-177278640
 [source-map-options]: https://github.com/postcss/postcss/blob/master/docs/source-maps.md
 [pattern rules]: https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html
 [yargs dot notation]: https://www.npmjs.com/package/yargs#dot-notation
