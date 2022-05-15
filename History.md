@@ -1,4 +1,10 @@
 
+3.2.0 / 2022-05-15
+==================
+
+ * support postcss@8
+ * move postcss to peer dependencies
+
 3.1.0 / 2020-06-04
 ==================
 
