@@ -19,12 +19,15 @@
   "license": "MIT",
   "dependencies": {
     "async": "~3",
-    "postcss": "~5 || ~6 || ~7",
-    "yargs-parser": "~18"
+    "yargs-parser": "~18 || ~19 || ~20 || ~21"
+  },
+  "peerDependencies": {
+    "postcss": "~5 || ~6 || ~7 || ~8"
   },
   "devDependencies": {
     "jshint": "~2",
-    "postcss-url": "^8.0.0",
+    "postcss": "~8",
+    "postcss-url": "~10",
     "tape": "~5"
   },
   "files": [
