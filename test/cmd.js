@@ -1,4 +1,4 @@
-const { mkdir, rmdir, readFileSync } = require('fs');
+const { mkdir, rm, readFileSync } = require('fs');
 const { resolve } = require('path');
 const { exec } = require('child_process');
 const test = require('tape');
@@ -108,7 +108,7 @@ cliTest('js-config-all', c`postcss -c fixtures/config-all.js`);
 
 
 test('teardown', function(t) {
-  rmdir(c`_build`, { recursive: true }, t.end);
+  rm(c`_build`, { recursive: true }, t.end);
 });
 
 function cliTest(name, cmd,
