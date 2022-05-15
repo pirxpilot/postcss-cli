@@ -6,5 +6,5 @@ const args = argv();
 if (typeof args === 'number') {
   process.exit(args);
 } else {
-  run(args, exitCode => process.exit(exitCode));
+  run(args).then(exitCode => process.exit(exitCode));
 }
