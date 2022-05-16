@@ -1,7 +1,6 @@
 [![NPM version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
+[![Build Status][build-image]][build-url]
 [![Dependency Status][deps-image]][deps-url]
-[![Dev Dependency Status][deps-dev-image]][deps-dev-url]
 
 # postcss-cli-simple
 
@@ -139,11 +138,8 @@ MIT
 [npm-image]: https://img.shields.io/npm/v/postcss-cli-simple.svg
 [npm-url]: https://npmjs.org/package/postcss-cli-simple
 
-[travis-url]: https://travis-ci.org/pirxpilot/postcss-cli
-[travis-image]: https://img.shields.io/travis/pirxpilot/postcss-cli.svg
-
-[deps-image]: https://img.shields.io/david/pirxpilot/postcss-cli.svg
-[deps-url]: https://david-dm.org/pirxpilot/postcss-cli
-
-[deps-dev-image]: https://img.shields.io/david/dev/pirxpilot/postcss-cli.svg
-[deps-dev-url]: https://david-dm.org/pirxpilot/postcss-cli?type=dev
+[build-image]: https://img.shields.io/github/workflow/status/pirxpilot/postcss-cli/check
+[build-url]: https://github.com/pirxpilot/postcss-cli/actions/workflows/check.yaml
+ 
+[deps-image]: https://img.shields.io/librariesio/release/npm/postcss-cli-simple
+[deps-url]: https://libraries.io/npm/postcss-cli-simple
