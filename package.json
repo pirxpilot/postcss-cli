@@ -18,7 +18,6 @@
   "author": "Damian Krzeminski <pirxpilot@furkot.com>",
   "license": "MIT",
   "dependencies": {
-    "async": "~3",
     "yargs-parser": "~18 || ~19 || ~20 || ~21"
   },
   "peerDependencies": {
