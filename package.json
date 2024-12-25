@@ -1,6 +1,6 @@
 {
   "name": "postcss-cli-simple",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "simple CLI for postcss",
   "main": "index.js",
   "bin": {
