@@ -1,4 +1,5 @@
-const test = require('tape');
+const test = require('node:test');
+
 const argv = require('../lib/argv');
 
 // trim and split as a bad approximation of converting commang line into array of strings
@@ -10,12 +11,12 @@ test('single plugin', function(t) {
   t.plan(5);
 
   const opts = argv(_`--use autoprefixer -o out.css in.css`);
-  t.deepEqual(opts.use, [ 'autoprefixer' ]);
-  t.equal(opts.output, 'out.css');
-  t.deepEqual(opts._, [ 'in.css' ]);
+  t.assert.deepEqual(opts.use, [ 'autoprefixer' ]);
+  t.assert.equal(opts.output, 'out.css');
+  t.assert.deepEqual(opts._, [ 'in.css' ]);
 
-  t.notOk(opts.version, 'should not have version');
-  t.notOk(opts.help, 'should not have tape');
+  t.assert.equal(opts.version, undefined, 'should not have version');
+  t.assert.equal(opts.help, undefined, 'should not have tape');
 });
 
 test('syntax', function(t) {
@@ -28,7 +29,7 @@ test('syntax', function(t) {
     in.css
   `);
 
-  t.equal(opts.syntax, 'mysyntax');
+  t.assert.equal(opts.syntax, 'mysyntax');
 });
 
 test('parser', function(t) {
@@ -41,7 +42,7 @@ test('parser', function(t) {
     in.css
   `);
 
-  t.equal(opts.parser, 'myparser');
+  t.assert.equal(opts.parser, 'myparser');
 });
 
 test('stringifier', function(t) {
@@ -54,7 +55,7 @@ test('stringifier', function(t) {
     in.css
   `);
 
-  t.equal(opts.stringifier, 'mystringifier');
+  t.assert.equal(opts.stringifier, 'mystringifier');
 });
 
 test('config .json', function(t) {
@@ -62,9 +63,9 @@ test('config .json', function(t) {
 
   const opts = argv(_`--config test/fixtures/config-all.json in.css`);
 
-  t.deepEqual(opts.use, [ 'postcss-url' ]);
-  t.equal(opts.output, 'test/build/config-all.css');
-  t.deepEqual(opts['postcss-url'], { url: 'inline' });
+  t.assert.deepEqual(opts.use, [ 'postcss-url' ]);
+  t.assert.equal(opts.output, 'test/build/config-all.css');
+  t.assert.deepEqual(opts['postcss-url'], { url: 'inline' });
 });
 
 test('config .js', function(t) {
@@ -77,11 +78,11 @@ test('config .js', function(t) {
     in.css
   `);
 
-  t.deepEqual(opts.use, [ 'postcss-url' ]);
-  t.equal(opts.output, 'out.css');
+  t.assert.deepEqual(opts.use, [ 'postcss-url' ]);
+  t.assert.equal(opts.output, 'out.css');
 
-  t.ok(opts['postcss-url'], 'opts should have `postcss-url` property');
-  t.equal(typeof opts['postcss-url'].url, 'function');
+  t.assert.ok(opts['postcss-url'], 'opts should have `postcss-url` property');
+  t.assert.equal(typeof opts['postcss-url'].url, 'function');
 });
 
 test('multiple plugins with options', function(t) {
@@ -94,11 +95,11 @@ test('multiple plugins with options', function(t) {
     --output out.css in.css
   `);
 
-  t.deepEqual(opts.use, [ 'postcss-url', 'autoprefixer', 'cssnano' ]);
-  t.deepEqual(opts.output, 'out.css');
-  t.deepEqual(opts._, [ 'in.css' ]);
+  t.assert.deepEqual(opts.use, [ 'postcss-url', 'autoprefixer', 'cssnano' ]);
+  t.assert.deepEqual(opts.output, 'out.css');
+  t.assert.deepEqual(opts._, [ 'in.css' ]);
 
-  t.deepEqual(opts['postcss-url'], { url: 'rebase', assetPath: '/temp/example' });
-  t.deepEqual(opts.autoprefixer, { browsers: '>5%' });
-  t.deepEqual(opts.cssnano, { discardUnused: false });
+  t.assert.deepEqual(opts['postcss-url'], { url: 'rebase', assetPath: '/temp/example' });
+  t.assert.deepEqual(opts.autoprefixer, { browsers: '>5%' });
+  t.assert.deepEqual(opts.cssnano, { discardUnused: false });
 });
