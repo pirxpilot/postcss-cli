@@ -138,8 +138,8 @@ MIT
 [npm-image]: https://img.shields.io/npm/v/postcss-cli-simple
 [npm-url]: https://npmjs.org/package/postcss-cli-simple
 
-[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/postcss-cli-simple/check.yaml?branch=main
-[build-url]: https://github.com/pirxpilot/postcss-cli-simple/actions/workflows/check.yaml
+[build-image]: https://img.shields.io/github/actions/workflow/status/pirxpilot/postcss-cli/check.yaml?branch=main
+[build-url]: https://github.com/pirxpilot/postcss-cli/actions/workflows/check.yaml
  
 [deps-image]: https://img.shields.io/librariesio/release/npm/postcss-cli-simple
 [deps-url]: https://libraries.io/npm/postcss-cli-simple
