@@ -4,7 +4,7 @@ lint:
 	./node_modules/.bin/jshint *.js lib test bin/postcss
 
 test:
-	./node_modules/.bin/tape test/*.js
+	node --test test/*.js
 
 clean:
 	rm -rf test/_build

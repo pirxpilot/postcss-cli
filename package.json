@@ -29,8 +29,7 @@
   "devDependencies": {
     "@pirxpilot/jshint": "~3",
     "postcss": "~8",
-    "postcss-url": "~10",
-    "tape": "~5"
+    "postcss-url": "~10"
   },
   "files": [
     "index.js",
