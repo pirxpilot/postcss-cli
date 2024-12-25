@@ -4,12 +4,15 @@
   "description": "simple CLI for postcss",
   "main": "index.js",
   "bin": {
-    "postcss": "./bin/postcss"
+    "postcss": "bin/postcss"
   },
   "scripts": {
     "test": "make check"
   },
-  "repository": "https://github.com/pirxpilot/postcss-cli.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirxpilot/postcss-cli.git"
+  },
   "keywords": [
     "postcss",
     "postcss-runner",
@@ -24,7 +27,7 @@
     "postcss": "~5 || ~6 || ~7 || ~8"
   },
   "devDependencies": {
-    "jshint": "~2",
+    "@pirxpilot/jshint": "~3",
     "postcss": "~8",
     "postcss-url": "~10",
     "tape": "~5"
