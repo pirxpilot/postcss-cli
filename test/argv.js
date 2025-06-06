@@ -7,19 +7,19 @@ function _(strings) {
   return strings[0].trim().split(/\s+/);
 }
 
-test('single plugin', function(t) {
+test('single plugin', t => {
   t.plan(5);
 
   const opts = argv(_`--use autoprefixer -o out.css in.css`);
-  t.assert.deepEqual(opts.use, [ 'autoprefixer' ]);
+  t.assert.deepEqual(opts.use, ['autoprefixer']);
   t.assert.equal(opts.output, 'out.css');
-  t.assert.deepEqual(opts._, [ 'in.css' ]);
+  t.assert.deepEqual(opts._, ['in.css']);
 
   t.assert.equal(opts.version, undefined, 'should not have version');
   t.assert.equal(opts.help, undefined, 'should not have tape');
 });
 
-test('syntax', function(t) {
+test('syntax', t => {
   t.plan(1);
 
   const opts = argv(_`
@@ -32,7 +32,7 @@ test('syntax', function(t) {
   t.assert.equal(opts.syntax, 'mysyntax');
 });
 
-test('parser', function(t) {
+test('parser', t => {
   t.plan(1);
 
   const opts = argv(_`
@@ -45,7 +45,7 @@ test('parser', function(t) {
   t.assert.equal(opts.parser, 'myparser');
 });
 
-test('stringifier', function(t) {
+test('stringifier', t => {
   t.plan(1);
 
   const opts = argv(_`
@@ -58,17 +58,17 @@ test('stringifier', function(t) {
   t.assert.equal(opts.stringifier, 'mystringifier');
 });
 
-test('config .json', function(t) {
+test('config .json', t => {
   t.plan(3);
 
   const opts = argv(_`--config test/fixtures/config-all.json in.css`);
 
-  t.assert.deepEqual(opts.use, [ 'postcss-url' ]);
+  t.assert.deepEqual(opts.use, ['postcss-url']);
   t.assert.equal(opts.output, 'test/build/config-all.css');
   t.assert.deepEqual(opts['postcss-url'], { url: 'inline' });
 });
 
-test('config .js', function(t) {
+test('config .js', t => {
   t.plan(4);
 
   const opts = argv(_`
@@ -78,14 +78,14 @@ test('config .js', function(t) {
     in.css
   `);
 
-  t.assert.deepEqual(opts.use, [ 'postcss-url' ]);
+  t.assert.deepEqual(opts.use, ['postcss-url']);
   t.assert.equal(opts.output, 'out.css');
 
   t.assert.ok(opts['postcss-url'], 'opts should have `postcss-url` property');
   t.assert.equal(typeof opts['postcss-url'].url, 'function');
 });
 
-test('multiple plugins with options', function(t) {
+test('multiple plugins with options', t => {
   t.plan(6);
 
   const opts = argv(_`
@@ -95,9 +95,9 @@ test('multiple plugins with options', function(t) {
     --output out.css in.css
   `);
 
-  t.assert.deepEqual(opts.use, [ 'postcss-url', 'autoprefixer', 'cssnano' ]);
+  t.assert.deepEqual(opts.use, ['postcss-url', 'autoprefixer', 'cssnano']);
   t.assert.deepEqual(opts.output, 'out.css');
-  t.assert.deepEqual(opts._, [ 'in.css' ]);
+  t.assert.deepEqual(opts._, ['in.css']);
 
   t.assert.deepEqual(opts['postcss-url'], { url: 'rebase', assetPath: '/temp/example' });
   t.assert.deepEqual(opts.autoprefixer, { browsers: '>5%' });
