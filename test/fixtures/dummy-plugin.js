@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = () => {
   return {
     postcssPlugin: 'dummy-plugin',
     Rule: function (rule, { result }) {

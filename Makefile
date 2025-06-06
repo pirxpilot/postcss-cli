@@ -1,12 +1,15 @@
 check: lint test
 
 lint:
-	./node_modules/.bin/jshint *.js lib test bin/postcss
+	./node_modules/.bin/biome ci
+
+format:
+	./node_modules/.bin/biome check --fix
 
 test:
-	node --test test/*.js
+	node --test $(TEST_OPTS) test/*.js
 
-clean:
-	rm -rf test/_build
+test-cov: TEST_OPTS := --experimental-test-coverage
+test-cov: test
 
-.PHONY: check clean lint test
+.PHONY: check format lint test test-cov
