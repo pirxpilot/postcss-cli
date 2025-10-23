@@ -110,7 +110,7 @@ test('cmd', async t => {
     name,
     cmd,
     inpath = c`fixtures/in.css`,
-    outpath = c`_build/` + `${name}.css`,
+    outpath = `${c`_build/`}${name}.css`,
     refpath = outpath.replace('_build', 'ref')
   ) {
     await t.test(name, async () => {
