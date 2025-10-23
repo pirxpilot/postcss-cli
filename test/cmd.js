@@ -57,6 +57,7 @@ test('cmd', async t => {
   await t.test('error', async () => {
     const cmd = c`
       NO_COLOR=1 \
+      FORCE_COLOR=0 \
       NODE_PATH=fixtures \
       postcss \
         --use dummy-plugin \
