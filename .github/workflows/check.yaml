@@ -4,11 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 'lts/*'
-      - run: yarn install
+      - run: npm install
       - run: make check
-        env:
-          NO_COLOR: 1
