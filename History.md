@@ -1,4 +1,11 @@
 
+4.0.5 / 2025-10-23
+==================
+
+ * update github actions
+ * upgrade `yarg-parser` to ~22
+ * upgrade `biome` to 2.2.7
+
 4.0.4 / 2025-06-06
 ==================
 
