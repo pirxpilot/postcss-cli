@@ -2,38 +2,38 @@
   "name": "postcss-cli-simple",
   "version": "4.0.5",
   "description": "simple CLI for postcss",
-  "main": "index.js",
-  "bin": {
-    "postcss": "bin/postcss"
-  },
-  "scripts": {
-    "test": "make check"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pirxpilot/postcss-cli.git"
-  },
   "keywords": [
     "postcss",
     "postcss-runner",
     "cli"
   ],
-  "author": "Damian Krzeminski <pirxpilot@furkot.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pirxpilot/postcss-cli.git"
+  },
   "license": "MIT",
-  "dependencies": {
-    "yargs-parser": "~18 || ~19 || ~20 || ~21 || ~22"
-  },
-  "peerDependencies": {
-    "postcss": "~5 || ~6 || ~7 || ~8"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^2.2.7",
-    "postcss": "~8",
-    "postcss-url": "~10"
+  "author": "Damian Krzeminski <pirxpilot@furkot.com>",
+  "main": "index.js",
+  "bin": {
+    "postcss": "bin/postcss"
   },
   "files": [
     "index.js",
     "bin",
     "lib"
-  ]
+  ],
+  "scripts": {
+    "test": "make check"
+  },
+  "dependencies": {
+    "yargs-parser": "~18 || ~19 || ~20 || ~21 || ~22"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.14",
+    "postcss": "~8",
+    "postcss-url": "~10"
+  },
+  "peerDependencies": {
+    "postcss": "~5 || ~6 || ~7 || ~8"
+  }
 }

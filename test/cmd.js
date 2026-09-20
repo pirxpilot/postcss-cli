@@ -107,6 +107,8 @@ test('cmd', async t => {
 
   await cliTest('js-config-all', c`postcss -c fixtures/config-all.js`);
 
+  await cliTest('esm', c`NODE_PATH=fixtures postcss --use esm-plugin`);
+
   async function cliTest(
     name,
     cmd,
