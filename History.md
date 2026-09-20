@@ -1,4 +1,10 @@
 
+4.0.6 / 2026-09-20
+==================
+
+ * add support for importing ESM plugins
+ * upgrade `biome` to 2.5.14
+
 4.0.5 / 2025-10-23
 ==================
 
